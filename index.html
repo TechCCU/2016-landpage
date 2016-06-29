@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <title>TechCCU Workshop 2016</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <link rel="stylesheet" href="./assets/css/app.css">
+  </head>
+  <body id="techccu-2016">
+    <main>
+      <div class="container-full" id="info">
+        <nav class="blue">
+          <div class="container nav-wrapper">
+            <a href="#info" class="brand-logo">TechCCU</a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="#speakers"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> 講者</a></li>
+              <li><a href="#schedule"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> 議程</a></li>
+              <li><a href="#location"><i class="fa fa-location-arrow fa-fw" aria-hidden="true"></i> 地點</a></li>
+              <li><a href="#staffs"><i class="fa fa-users fa-fw" aria-hidden="true"></i> 工作人員</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <div class="center">
+          <h1>TechCCU Workshop 2016</h1>
+          <h2>簡介文字，需要有背景圖片或影片</h2>
+
+        </div>
+
+        <div class="center day-and-location">
+          <a
+            href="http://techccu.kktix.cc/events/techccuworkshop2016"
+            class="waves-effect waves-light btn orange"
+          ><h5><i class="fa fa-check-square-o" aria-hidden="true"></i> 報名</h5></a>
+
+          <h5>2016 年 10 月 01 日，中正大學資工館</h5>
+        </div>
+      </div>
+
+      <div class="container" id="speakers">
+        <div class="heading">
+          <h3>講者</h3>
+          <p class="flow-text">Speakers</p>
+        </div>
+
+        <div class="row">
+          <div
+            v-for="speaker in speakers"
+            class="col s12 m4"
+            :class="{
+              'push-m4': ($index === speakers.length - 1) && (1 === speakersModThree),
+              'push-m2': ($index >= speakers.length - 2) && (2 === speakersModThree)
+            }"
+          >
+            <a :href="speaker.link" target="_blank">
+              <div class="card-panel hoverable">
+                <div class="center">
+                  <img
+                    :src="'./assets/img/speakers/' + speaker.avatar"
+                    :alt="speaker.name"
+                    width="130"
+                    height="130"
+                    class="circle responsive-img"
+                  >
+                </div>
+
+                <div style="max-height: 7rem; height: 7rem;">
+                  <h5 class="center">{{ speaker.name }}</h5>
+                  <p class="black-text">{{ speaker.description }}</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="container" id="schedule">
+        <div class="heading">
+          <h3>議程</h3>
+          <p class="flow-text">Schedule</p>
+        </div>
+
+        <ul>
+          <li v-for="schedule in schedules" :class="{ minor: schedule.minor }">
+            <time>{{ schedule.time }}</time>
+
+            <div>
+              <h6>
+                <span v-if="schedule.speaker">{{ schedule.speaker }} - </span>
+
+                <span>{{ schedule.topic }}</span>
+
+                <template v-if="schedule.slide || schedule.video">
+                  <br><br>
+
+                  <a
+                    v-if="schedule.slide"
+                    :href="schedule.slide"
+                    target="_blank"
+                    style="margin-right: 0.85rem;"
+                  ><i class="fa fa-slideshare fa-fw" aria-hidden="true"></i> 簡報</a>
+
+                  <a
+                    v-if="schedule.video"
+                    :href="schedule.video"
+                    target="_blank"
+                  ><i class="fa fa-youtube-play fa-fw" aria-hidden="true"></i> 影片</a>
+                </template>
+              </h6>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <hr>
+
+      <div class="container-full" id="location">
+        <div class="heading">
+          <h3>地點</h3>
+          <p class="flow-text">Location</p>
+        </div>
+
+        <div style="background-color: #e3f2fd;">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m19!1m8!1m3!1d29256.78730568817!2d120.4604832062988!3d23.564908700336147!3m2!1i1024!2i768!4f13.1!4m8!3e0!4m0!4m5!1s0x346ebe54482d7e2d%3A0xdbc72b69cefc0e42!2z5bel5a246Zmi5LiA6aSoIDYyMeWPsOeBo-WYiee-qee4o-awkembhOmEiQ!3m2!1d23.5620799!2d120.4774784!5e0!3m2!1szh-TW!2stw!4v1467212217032" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+          <div class="traffic">
+            <h5><i class="fa fa-car fa-fw" aria-hidden="true"></i> 開車</h5>
+            <div class="row">
+              <div class="col s12 m4" style="padding-left: 0;">
+                <b>國道一號</b>
+                <ol>
+                  <li>由民雄交流道下</li>
+                  <li>於民雄外環道(民新路)前行約 1.9km</li>
+                  <li>過民雄陸橋後左轉進入台一線,前行約 600m (可以看見福懋加油站)</li>
+                  <li>右轉沿大學路前行約 4km 即可到達</li>
+                </ol>
+              </div>
+
+              <div class="col s12 m4">
+                <b>國道三號 / <span class="grey-text">南下</span></b>
+                <ol>
+                  <li>由梅山交流道下</li>
+                  <li>縣道 162 (經大林鎮公所)</li>
+                  <li>左轉民生路</li>
+                  <li>往前行駛左轉大民北路</li>
+                  <li>左轉縣道 106 (大學路一段)再行駛五分鐘即可到達</li>
+                </ol>
+              </div>
+
+              <div class="col s12 m4">
+                <b>國道三號 / <span class="grey-text">北上</span></b>
+                <ol>
+                  <li>由竹崎交流道下</li>
+                  <li>縣道166</li>
+                  <li>民雄方向</li>
+                  <li>依沿路指示牌即可到達</li>
+                </ol>
+              </div>
+            </div>
+
+            <h5><i class="fa fa-train fa-fw" aria-hidden="true"></i> 火車</h5>
+            <p>搭乘火車至民雄站，出站後步行至民雄長壽會館轉乘嘉義縣公車。</p>
+
+            <h5><i class="fa fa-subway fa-fw" aria-hidden="true"></i> 高鐵</h5>
+            <p>由嘉義高鐵站搭乘計程車至本校，路程約 30 ~ 40 分鐘。</p>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="container" id="staffs">
+        <div class="heading">
+          <h3>工作人員</h3>
+          <p class="flow-text">Staffs</p>
+        </div>
+
+        <div class="row">
+          <div
+            v-for="staff in staffs"
+            class="col s6 m4"
+            :class="{
+              'push-m4': ($index === staffs.length - 1) && (1 === staffsModThree),
+              'push-m2': ($index >= staffs.length - 2) && (2 === staffsModThree),
+              'push-s3': ($index === staffs.length - 1) && (1 === staffsModTwo)
+            }"
+          >
+            <div class="center">
+              <img
+                :src="'./assets/img/staffs/' + staff.avatar"
+                :alt="staff.name"
+                width="64"
+                height="64"
+                class="circle responsive-img"
+              >
+            </div>
+
+            <div class="center" style="max-height: 7rem; height: 7rem;">
+              <h5>{{ staff.name }}</h5>
+              <span>{{ staff.description }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="container center">
+      <hr>
+      <p>主辦單位：TechCCU, DM+ Lab @ Dept. CSIE</p>
+      <p>協辦單位：中正大學校園網路策進會</p>
+      <p>© 2016 TechCCU</p>
+      <p>Designed by <a href="https://github.com/BePsvPT" target="_blank">BePsvPT</a></p>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+    <script>
+      new Vue({
+        el: '#techccu-2016',
+
+        data: {
+          speakers: [
+            {
+              avatar: 'kudo.jpg',
+              name: 'Kudo',
+              description: '人生志向是 DEBUG，對於不會的事物充滿好奇，最近愛上了 React Native，不斷在朋友與公司裡推坑。',
+              link: 'https://www.google.com.tw'
+            },
+            {
+              avatar: 'changyy.jpg',
+              name: 'Changyy',
+              description: '喜歡寫寫小品程式、試試新技術，現居台北的斗六人。',
+              link: 'https://www.google.com.tw'
+            },
+            {
+              avatar: 'sweslo.jpg',
+              name: 'Sweslo',
+              description: '目前在資策會資料科學組的小小碼農。有碼很好，有時候無碼也不錯。',
+              link: 'https://www.google.com.tw'
+            },
+            {
+              avatar: 'lukas.jpg',
+              name: 'Lukas',
+              description: '目前忝為 digital nomad 在淡水老街水岸旁，雖吃不飽但也餓不死。',
+              link: 'https://www.google.com.tw'
+            }
+          ],
+
+          schedules: [
+            {
+              minor: true,
+              time: '08:00 AM',
+              topic: '報到'
+            },
+            {
+              minor: false,
+              time: '08:30 AM',
+              topic: '開場'
+            },
+            {
+              minor: false,
+              time: '08:40 AM',
+              speaker: 'Kudo',
+              topic: '工程師的生涯規劃，從 React Native 開始',
+              slide: 'http://techccu.csie.io/2015/slides/kudo.pdf',
+              video: 'https://www.youtube.com/watch?v=uwKGVckcrJ0'
+            },
+            {
+              minor: false,
+              time: '09:40 AM',
+              speaker: 'Changyy',
+              topic: '第二十四個夏天後',
+              slide: 'http://techccu.csie.io/2015/slides/changyy.pdf',
+              video: 'https://www.youtube.com/watch?v=DOax6br6sOU'
+            },
+            {
+              minor: false,
+              time: '10:40 AM',
+              speaker: 'Yoco',
+              topic: '淺度學習深度學習',
+              slide: 'http://techccu.csie.io/2015/slides/yoco.pdf',
+              video: 'https://www.youtube.com/watch?v=-VujpepPaZ0'
+            },
+            {
+              minor: true,
+              time: '11:30 AM',
+              topic: '午餐時間'
+            },
+            {
+              minor: false,
+              time: '01:10 PM',
+              speaker: 'mnhung',
+              topic: '遊戲 X Script X 翻譯',
+              slide: 'http://techccu.csie.io/2015/slides/mnhung.pdf',
+              video: 'https://www.youtube.com/watch?v=wsrcgYU5g4c'
+            }
+          ],
+
+          staffs: [
+            {
+              avatar: 'terces.jpg',
+              name: 'terces',
+              description: 'Funding(X) Founding(O)'
+            },
+            {
+              avatar: 'brucehsu.png',
+              name: 'brucehsu',
+              description: 'TechCCU Co-Founder'
+            },
+            {
+              avatar: 'icemango.jpg',
+              name: 'icemango',
+              description: '織網者'
+            }
+          ]
+        },
+
+        computed: {
+          speakersModThree () {
+            return this.speakers.length % 3
+          },
+
+          staffsModThree () {
+            return this.staffs.length % 3
+          },
+
+          staffsModTwo () {
+            return this.staffs.length & 1
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
