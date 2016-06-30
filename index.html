@@ -16,10 +16,10 @@
           <div class="container nav-wrapper">
             <a href="#info" class="brand-logo">TechCCU</a>
             <ul class="right hide-on-med-and-down">
-              <li><a href="#speakers"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> 講者</a></li>
-              <li><a href="#schedule"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> 議程</a></li>
-              <li><a href="#location"><i class="fa fa-location-arrow fa-fw" aria-hidden="true"></i> 地點</a></li>
-              <li><a href="#staffs"><i class="fa fa-users fa-fw" aria-hidden="true"></i> 工作人員</a></li>
+              <li><a href="#speakers-separator"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> 講者</a></li>
+              <li><a href="#schedule-separator"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> 議程</a></li>
+              <li><a href="#location-separator"><i class="fa fa-location-arrow fa-fw" aria-hidden="true"></i> 地點</a></li>
+              <li><a href="#staffs-separator"><i class="fa fa-users fa-fw" aria-hidden="true"></i> 工作人員</a></li>
             </ul>
           </div>
         </nav>
@@ -41,6 +41,8 @@
 
           <h5 class="white-text">2016 年 10 月 01 日<span class="hide-on-small-only">，</span><br class="hide-on-med-and-up">中正大學資工館</h5>
         </div>
+
+        <div id="speakers-separator"></div>
       </div>
 
       <div class="container" id="speakers">
@@ -80,7 +82,7 @@
         </div>
       </div>
 
-      <hr>
+      <hr id="schedule-separator">
 
       <div class="container" id="schedule">
         <div class="heading">
@@ -94,9 +96,9 @@
 
             <div>
               <h6>
-                <span v-if="schedule.speaker">{{ schedule.speaker }} - </span>
+                <b v-if="schedule.speaker">{{ schedule.speaker }} - </b>
 
-                <span>{{ schedule.topic }}</span>
+                <b>{{ schedule.topic }}</b>
 
                 <template v-if="schedule.slide || schedule.video">
                   <br><br>
@@ -120,7 +122,7 @@
         </ul>
       </div>
 
-      <hr>
+      <hr id="location-separator">
 
       <div class="container-full" id="location">
         <div class="heading">
@@ -129,12 +131,14 @@
         </div>
 
         <div style="background-color: #e3f2fd;">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m19!1m8!1m3!1d29256.78730568817!2d120.4604832062988!3d23.564908700336147!3m2!1i1024!2i768!4f13.1!4m8!3e0!4m0!4m5!1s0x346ebe54482d7e2d%3A0xdbc72b69cefc0e42!2z5bel5a246Zmi5LiA6aSoIDYyMeWPsOeBo-WYiee-qee4o-awkembhOmEiQ!3m2!1d23.5620799!2d120.4774784!5e0!3m2!1szh-TW!2stw!4v1467212217032" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+          <div class="container" style="padding-top: 2rem;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m19!1m8!1m3!1d29257.610709160697!2d120.46159944458009!3d23.561211313461314!3m2!1i1024!2i768!4f13.1!4m8!3e0!4m0!4m5!1s0x346ebe54482d7e2d%3A0xdbc72b69cefc0e42!2z5bel5a246Zmi5LiA6aSoIDYyMeWPsOeBo-WYiee-qee4o-awkembhOmEiQ!3m2!1d23.5620799!2d120.4774784!5e0!3m2!1szh-TW!2stw!4v1467271619199" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+          </div>
 
-          <div class="traffic">
+          <div class="container traffic">
             <h5><i class="fa fa-car fa-fw" aria-hidden="true"></i> 開車</h5>
             <div class="row">
-              <div class="col s12 m4" style="padding-left: 0;">
+              <div class="col s12 m4">
                 <b>國道一號</b>
                 <ol>
                   <li>由民雄交流道下</li>
@@ -175,7 +179,7 @@
         </div>
       </div>
 
-      <hr>
+      <hr id="staffs-separator">
 
       <div class="container" id="staffs">
         <div class="heading">

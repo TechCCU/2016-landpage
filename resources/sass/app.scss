@@ -1,10 +1,18 @@
+html {
+  font-family: GillSans, Calibri, Trebuchet, Heiti-TC, WenQuanYi-Zen-Hei, Microsoft-JhengHei, sans-serif;
+}
+
 body {
   background-color: #fafafa;
 }
 
 hr {
-  margin: 3rem 0;
+  margin: 3.5rem 0;
   border-top: 1px solid #eeeeee;
+}
+
+b {
+  font-size: 1.2rem;
 }
 
 .heading {
@@ -44,6 +52,7 @@ hr {
     a {
       height: 48px;
       margin-bottom: 1.8rem;
+      opacity: 0.85;
 
       i {
         font-size: unset;
@@ -121,7 +130,7 @@ hr {
   }
 
   .traffic {
-    padding: 2rem 6rem;
+    padding: 2rem 0;
 
     ol {
       padding-left: 20px;
