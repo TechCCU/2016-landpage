@@ -96,9 +96,9 @@
 
             <div>
               <h6>
-                <b v-if="schedule.speaker">{{ schedule.speaker }} - </b>
+                <span v-if="schedule.speaker" style="font-size: 1.2rem;">{{ schedule.speaker }} - </span>
 
-                <b>{{ schedule.topic }}</b>
+                <span style="font-size: 1.2rem;">{{ schedule.topic }}</span>
 
                 <template v-if="schedule.slide || schedule.video">
                   <br><br>
