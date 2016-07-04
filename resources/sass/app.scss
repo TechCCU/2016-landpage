@@ -25,7 +25,7 @@ hr {
 }
 
 .parallax-container {
-  height: calc(100vh - 64px);
+  height: 100vh;
   width: 100%;
 }
 
@@ -33,6 +33,19 @@ hr {
   position: relative;
   height: 100vh;
   margin-bottom: 3rem;
+
+  .navbar-fixed {
+    height: unset;
+
+    nav {
+      background: linear-gradient(left top, rgba(52, 59, 65, 0.6), rgba(40, 42, 44, .6));
+      //background-color: rgba(52, 59, 65, 0.6);
+
+      a {
+        opacity: 1;
+      }
+    }
+  }
 
   .title-and-description {
     position: absolute;
