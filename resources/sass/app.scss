@@ -39,7 +39,7 @@ hr {
 
     nav {
       background: linear-gradient(left top, rgba(52, 59, 65, 0.6), rgba(40, 42, 44, .6));
-      //background-color: rgba(52, 59, 65, 0.6);
+      background: -moz-linear-gradient(left top, rgba(52, 59, 65, 0.6), rgba(40, 42, 44, .6));
 
       a {
         opacity: 1;
