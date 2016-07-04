@@ -7,7 +7,7 @@ body {
 }
 
 hr {
-  margin: 4rem 0;
+  margin: 5rem 0;
   border-top: 1px solid #e0e0e0;
 }
 
@@ -42,10 +42,10 @@ hr {
 
   .day-and-location {
     position: absolute;
-    bottom: 2rem;
+    bottom: 1rem;
     width: 100%;
 
-    a {
+    .apply-btn {
       height: 48px;
       margin-bottom: 1.8rem;
       opacity: 0.85;
@@ -55,6 +55,10 @@ hr {
       }
     }
   }
+}
+
+#speakers {
+  margin-top: 5rem;
 }
 
 #schedule {
@@ -81,6 +85,7 @@ hr {
 
       time {
         color: #9e9e9e;
+        vertical-align: super;
       }
 
       div {

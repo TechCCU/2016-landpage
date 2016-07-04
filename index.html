@@ -12,17 +12,20 @@
   <body id="techccu-2016">
     <main>
       <div class="container-full" id="info">
-        <nav class="blue">
-          <div class="container nav-wrapper">
-            <a href="#info" class="brand-logo">TechCCU</a>
-            <ul class="right hide-on-med-and-down">
-              <li><a href="#speakers-separator"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> 講者</a></li>
-              <li><a href="#schedule-separator"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> 議程</a></li>
-              <li><a href="#location-separator"><i class="fa fa-location-arrow fa-fw" aria-hidden="true"></i> 地點</a></li>
-              <li><a href="#staffs-separator"><i class="fa fa-users fa-fw" aria-hidden="true"></i> 工作人員</a></li>
-            </ul>
-          </div>
-        </nav>
+        <div class="navbar-fixed">
+          <nav class="blue">
+            <div class="container nav-wrapper">
+              <a href="#info" class="brand-logo">TechCCU</a>
+              <ul class="right hide-on-med-and-down">
+                <li><a href="#speakers-separator"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> 講者</a></li>
+                <li><a href="#schedule-separator"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> 議程</a></li>
+                <li><a href="#location-separator"><i class="fa fa-location-arrow fa-fw" aria-hidden="true"></i> 地點</a></li>
+                <li><a href="#staffs-separator"><i class="fa fa-users fa-fw" aria-hidden="true"></i> 工作人員</a></li>
+                <li><a href="http://techccu.kktix.cc/events/techccuworkshop2016"><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i> 報名</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
 
         <div class="parallax-container">
           <div class="parallax"><img src="./assets/img/cover.jpg"></div>
@@ -36,10 +39,22 @@
         <div class="center day-and-location">
           <a
             href="http://techccu.kktix.cc/events/techccuworkshop2016"
-            class="waves-effect waves-light btn orange"
+            class="waves-effect waves-light btn orange apply-btn"
           ><h5><i class="fa fa-check-square-o" aria-hidden="true"></i> 報名</h5></a>
 
-          <h5 class="white-text">2016 年 10 月 01 日<span class="hide-on-small-only">，</span><br class="hide-on-med-and-up">中正大學資工館</h5>
+          <h5 class="white-text">2016 年 10 月 01 日<span class="hide-on-small-only">，</span><br class="hide-on-med-and-up">中正大學 工學院EA101</h5>
+          <h5 class="white-text">
+            <a
+              href="https://webchat.freenode.net?channels=TechCCU"
+              target="_blank"
+              class="white-text tooltipped"
+              data-position="top"
+              data-delay="100"
+              data-tooltip="freenode#TechCCU"
+            >IRC</a>
+            <span> / </span>
+            <a href="https://techccu.slack.com" target="_blank" class="white-text">Slack</a>
+          </h5>
         </div>
 
         <div id="speakers-separator"></div>
@@ -96,7 +111,7 @@
 
             <div>
               <h6>
-                <span style="font-size: 1.5rem;">{{ schedule.topic }}</span>
+                <span style="font-size: 1.5rem; line-height: 1.8rem;">{{ schedule.topic }}</span>
 
                 <span v-if="schedule.speaker" style="font-size: 1.2rem;"> - {{ schedule.speaker }}</span>
 
@@ -217,7 +232,7 @@
     </main>
 
     <footer class="container center">
-      <hr>
+      <hr style="margin: 1rem 0;">
       <p>主辦單位：TechCCU, DM+ Lab @ Dept. CSIE</p>
       <p>協辦單位：中正大學校園網路策進會</p>
       <p>© 2016 TechCCU</p>
