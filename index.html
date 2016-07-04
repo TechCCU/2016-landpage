@@ -105,36 +105,10 @@
           <p class="flow-text">Schedule</p>
         </div>
 
-        <ul>
-          <li v-for="schedule in schedules" :class="{ minor: schedule.minor }">
-            <time>{{ schedule.time }}</time>
-
-            <div>
-              <h6>
-                <span style="font-size: 1.5rem; line-height: 1.8rem;">{{ schedule.topic }}</span>
-
-                <span v-if="schedule.speaker" style="font-size: 1.2rem;"> - {{ schedule.speaker }}</span>
-
-                <template v-if="schedule.slide || schedule.video">
-                  <br><br>
-
-                  <a
-                    v-if="schedule.slide"
-                    :href="schedule.slide"
-                    target="_blank"
-                    style="margin-right: 0.85rem;"
-                  ><i class="fa fa-slideshare fa-fw" aria-hidden="true"></i> 簡報</a>
-
-                  <a
-                    v-if="schedule.video"
-                    :href="schedule.video"
-                    target="_blank"
-                  ><i class="fa fa-youtube-play fa-fw" aria-hidden="true"></i> 影片</a>
-                </template>
-              </h6>
-            </div>
-          </li>
-        </ul>
+        <div class="row">
+          <schedule-component :schedules="schedules.am" style="margin-bottom: 0;"></schedule-component>
+          <schedule-component :schedules="schedules.pm"></schedule-component>
+        </div>
       </div>
 
       <hr id="location-separator">
@@ -243,6 +217,47 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
     <script>
+      var ScheduleComponent = Vue.extend({
+        template: `<ul class="col s12 m6">
+            <li v-for="schedule in schedules" :class="{ minor: schedule.minor }">
+              <time>{{ schedule.time }}</time>
+
+              <div>
+                <h6>
+                  <span class="topic">{{ schedule.topic }}</span>
+
+                  <span v-if="schedule.speaker" class="speaker"> - {{ schedule.speaker }}</span>
+
+                  <template v-if="schedule.slide || schedule.video">
+                    <br><br>
+
+                    <a
+                      v-if="schedule.slide"
+                      :href="schedule.slide"
+                      target="_blank"
+                      style="margin-right: 0.85rem;"
+                    ><i class="fa fa-slideshare fa-fw" aria-hidden="true"></i> 簡報</a>
+
+                    <a
+                      v-if="schedule.video"
+                      :href="schedule.video"
+                      target="_blank"
+                    ><i class="fa fa-youtube-play fa-fw" aria-hidden="true"></i> 影片</a>
+                  </template>
+                </h6>
+              </div>
+            </li>
+          </ul>`,
+        props: {
+          schedules: {
+            required: true,
+            type: Array
+          }
+        }
+      })
+
+      Vue.component('schedule-component', ScheduleComponent)
+
       new Vue({
         el: '#techccu-2016',
 
@@ -274,55 +289,60 @@
             }
           ],
 
-          schedules: [
-            {
-              minor: true,
-              time: '08:00 AM',
-              topic: '報到'
-            },
-            {
-              minor: false,
-              time: '08:30 AM',
-              topic: '開場'
-            },
-            {
-              minor: false,
-              time: '08:40 AM',
-              speaker: 'Kudo',
-              topic: '工程師的生涯規劃，從 React Native 開始',
-              slide: 'http://techccu.csie.io/2015/slides/kudo.pdf',
-              video: 'https://www.youtube.com/watch?v=uwKGVckcrJ0'
-            },
-            {
-              minor: false,
-              time: '09:40 AM',
-              speaker: 'Changyy',
-              topic: '第二十四個夏天後',
-              slide: 'http://techccu.csie.io/2015/slides/changyy.pdf',
-              video: 'https://www.youtube.com/watch?v=DOax6br6sOU'
-            },
-            {
-              minor: false,
-              time: '10:40 AM',
-              speaker: 'Yoco',
-              topic: '淺度學習深度學習',
-              slide: 'http://techccu.csie.io/2015/slides/yoco.pdf',
-              video: 'https://www.youtube.com/watch?v=-VujpepPaZ0'
-            },
-            {
-              minor: true,
-              time: '11:30 AM',
-              topic: '午餐時間'
-            },
-            {
-              minor: false,
-              time: '01:10 PM',
-              speaker: 'mnhung',
-              topic: '遊戲 X Script X 翻譯',
-              slide: 'http://techccu.csie.io/2015/slides/mnhung.pdf',
-              video: 'https://www.youtube.com/watch?v=wsrcgYU5g4c'
-            }
-          ],
+          schedules: {
+            am: [
+              {
+                minor: true,
+                time: '08:00 AM',
+                topic: '報到'
+              },
+              {
+                minor: false,
+                time: '08:30 AM',
+                topic: '開場'
+              },
+              {
+                minor: false,
+                time: '08:40 AM',
+                speaker: 'Kudo',
+                topic: '工程師的生涯規劃，從 React Native 開始',
+                slide: 'http://techccu.csie.io/2015/slides/kudo.pdf',
+                video: 'https://www.youtube.com/watch?v=uwKGVckcrJ0'
+              },
+              {
+                minor: false,
+                time: '09:40 AM',
+                speaker: 'Changyy',
+                topic: '第二十四個夏天後',
+                slide: 'http://techccu.csie.io/2015/slides/changyy.pdf',
+                video: 'https://www.youtube.com/watch?v=DOax6br6sOU'
+              },
+              {
+                minor: false,
+                time: '10:40 AM',
+                speaker: 'Yoco',
+                topic: '淺度學習深度學習',
+                slide: 'http://techccu.csie.io/2015/slides/yoco.pdf',
+                video: 'https://www.youtube.com/watch?v=-VujpepPaZ0'
+              },
+              {
+                minor: true,
+                time: '11:30 AM',
+                topic: '午餐時間'
+              }
+            ],
+
+            pm: [
+              {
+                minor: false,
+                time: '01:10 PM',
+                speaker: 'mnhung',
+                topic: '遊戲 X Script X 翻譯',
+                slide: 'http://techccu.csie.io/2015/slides/mnhung.pdf',
+                video: 'https://www.youtube.com/watch?v=wsrcgYU5g4c'
+              }
+            ]
+          },
 
           staffs: [
             {
@@ -336,9 +356,9 @@
               description: 'TechCCU Co-Founder'
             },
             {
-              avatar: 'icemango.jpg',
-              name: 'icemango',
-              description: '織網者'
+              avatar: 'bepsvpt.jpg',
+              name: 'bepsvpt',
+              description: 'Website Designer'
             }
           ]
         },
