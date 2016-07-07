@@ -8,7 +8,7 @@
     <meta property="og:url" content="http://techccu.csie.io/2016/">
     <meta property="og:type" content="website">
     <meta property="og:image" content="http://techccu.csie.io/2016/assets/img/cover.jpg">
-    <meta property="og:description" content="2016 年 10 月 01 日，中正大學 工學院EA101">
+    <meta property="og:description" content="2016 年 10 月 01 日，中正大學 工學院 EA101">
     <title>TechCCU Workshop 2016</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
@@ -17,6 +17,7 @@
   <body id="techccu-2016">
     <main>
       <div class="container-full" id="info">
+        <!-- 選單列 -->
         <div class="navbar-fixed">
           <nav>
             <div class="container nav-wrapper">
@@ -32,21 +33,27 @@
           </nav>
         </div>
 
+        <!-- Landing Background Image -->
         <div class="parallax-container">
           <div class="parallax"><img src="./assets/img/cover.jpg"></div>
         </div>
 
+        <!-- 主題 -->
         <div class="white-text center title-and-description">
           <h2>TechCCU Workshop 2016</h2>
         </div>
 
         <div class="center day-and-location">
+          <!-- 報名按鈕 -->
           <a
             href="http://techccu.kktix.cc/events/techccuworkshop2016"
             class="waves-effect waves-light btn orange apply-btn"
           ><h5><i class="fa fa-check-square-o" aria-hidden="true"></i> 報名</h5></a>
 
-          <h5 class="white-text">2016 年 10 月 01 日<span class="hide-on-small-only">，</span><br class="hide-on-med-and-up">中正大學 工學院EA101</h5>
+          <!-- 活動時間及地點 -->
+          <h5 class="white-text">2016 年 10 月 01 日<span class="hide-on-small-only">，</span><br class="hide-on-med-and-up">中正大學 工學院 EA101</h5>
+
+          <!-- IRC 及 Slack 連結 -->
           <h5 class="white-text">
             <a
               href="https://webchat.freenode.net?channels=TechCCU"
@@ -236,10 +243,28 @@
 
         data: {
           speakers: [
+            /*
+             {
+               avatar: 'avatar.jpg',
+               name: 'Speaker Name',
+               description: 'Short Description',
+               link: 'An external link to speaker fb, github or website'
+             }
+             */
           ],
 
           schedules: {
             am: [
+              /*
+               {
+                 minor: false, // 是否為主要議程
+                 time: '08:40 AM',
+                 speaker: 'Speaker Name',
+                 topic: 'Topic',
+                 slide: 'Link to the slide', // optional
+                 video: 'Link to the video' // optional
+               },
+               */
             ],
 
             pm: [
