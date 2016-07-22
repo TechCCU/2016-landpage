@@ -22,6 +22,8 @@
           <nav>
             <div class="container nav-wrapper">
               <a href="#info" class="brand-logo">TechCCU</a>
+              <a href="#" data-activates="mobile-navbar" class="button-collapse"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a>
+
               <ul class="right hide-on-med-and-down">
                 <li><a href="#about-us-separator"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i> 關於我們</a></li>
                 <li><a href="#speakers-separator"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> 講者</a></li>
@@ -29,6 +31,15 @@
                 <li><a href="#location-separator"><i class="fa fa-location-arrow fa-fw" aria-hidden="true"></i> 地點</a></li>
                 <li><a href="#staffs-separator"><i class="fa fa-users fa-fw" aria-hidden="true"></i> 工作人員</a></li>
                 <li><a href="http://techccu.kktix.cc/events/techccu2016"><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i> 報名</a></li>
+              </ul>
+
+              <ul class="side-nav" id="mobile-navbar">
+                <li><a href="http://techccu.kktix.cc/events/techccu2016"><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i> 報名</a></li>
+                <li><a href="#about-us-separator"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i> 關於我們</a></li>
+                <li><a href="#speakers-separator"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> 講者</a></li>
+                <li><a href="#schedule-separator"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> 議程</a></li>
+                <li><a href="#location-separator"><i class="fa fa-location-arrow fa-fw" aria-hidden="true"></i> 地點</a></li>
+                <li><a href="#staffs-separator"><i class="fa fa-users fa-fw" aria-hidden="true"></i> 工作人員</a></li>
               </ul>
             </div>
           </nav>
@@ -378,6 +389,12 @@
 
       $(function () {
         $('.parallax').parallax();
+
+        $('.button-collapse').sideNav();
+
+        $(document).on('click', '#mobile-navbar a', function () {
+          $('#sidenav-overlay').click();
+        });
       });
     </script>
     <script>
