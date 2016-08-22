@@ -11,7 +11,7 @@
     <meta property="og:description" content="2016 年 10 月 01 日，中正大學 創新大樓 1F 銘珠講堂">
     <title>TechCCU 2016</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/app.css">
   </head>
   <body id="techccu-2016">
@@ -24,6 +24,7 @@
               <a href="#info" class="brand-logo">TechCCU</a>
               <a href="#" data-activates="mobile-navbar" class="button-collapse"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a>
 
+              <!-- Desktop 選單列 -->
               <ul class="right hide-on-med-and-down">
                 <li><a href="#about-us-separator"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i> 關於我們</a></li>
                 <li><a href="#speakers-separator"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> 講者</a></li>
@@ -33,6 +34,7 @@
                 <li><a href="http://techccu.kktix.cc/events/techccu2016"><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i> 報名</a></li>
               </ul>
 
+              <!-- Mobile 選單列 -->
               <ul class="side-nav" id="mobile-navbar">
                 <li><a href="http://techccu.kktix.cc/events/techccu2016"><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i> 報名</a></li>
                 <li><a href="#about-us-separator"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i> 關於我們</a></li>
@@ -51,11 +53,10 @@
         </div>
 
         <!-- 主題 -->
-        <div class="white-text center title-and-description">
-          <h2>TechCCU 2016</h2>
-        </div>
+        <h2 class="white-text center title">TechCCU 2016</h2>
 
-        <div class="center day-and-location">
+        <!-- Action Button -->
+        <div class="center action">
           <!-- 報名按鈕 -->
           <a
             href="http://techccu.kktix.cc/events/techccu2016"
@@ -63,22 +64,20 @@
           ><h5><i class="fa fa-check-square-o" aria-hidden="true"></i> 報名</h5></a>
 
           <!-- 活動時間及地點 -->
-          <h5 class="white-text">2016 年 10 月 01 日<span class="hide-on-small-only">，</span><br class="hide-on-med-and-up">中正大學 創新大樓 1F 銘珠講堂</h5>
+          <h5>2016 年 10 月 01 日<span class="hide-on-small-only">，</span><br class="hide-on-med-and-up">中正大學 創新大樓 1F 銘珠講堂</h5>
 
           <!-- 社群連結 -->
-          <h5 class="white-text">
+          <h5 class="community">
             <a
               href="https://webchat.freenode.net?channels=TechCCU"
               target="_blank"
-              class="white-text tooltipped"
+              class="tooltipped"
               data-position="top"
               data-delay="100"
               data-tooltip="freenode#TechCCU"
             >IRC</a>
-            <span> / </span>
-            <a href="https://techccu.slack.com" target="_blank" class="white-text">Slack</a>
-            <span> / </span>
-            <a href="https://www.facebook.com/techccu" target="_blank" class="white-text">Facebook</a>
+            <a href="https://techccu.slack.com" target="_blank">Slack</a>
+            <a href="https://www.facebook.com/techccu" target="_blank">Facebook</a>
           </h5>
         </div>
 
@@ -112,15 +111,15 @@
             v-for="speaker in speakers"
             class="col s12 m4"
             :class="{
-              'push-m4': ($index === speakers.length - 1) && (1 === speakersModThree),
-              'push-m2': ($index >= speakers.length - 2) && (2 === speakersModThree)
+              'col-pusher-m4': 0 === $index && 1 === speakersModThree,
+              'col-pusher-m2': 0 === $index && 2 === speakersModThree
             }"
           >
             <a :href="speaker.link" target="_blank">
               <div class="card-panel hoverable">
                 <div class="center">
                   <img
-                    :src="'./assets/img/speakers/' + speaker.avatar"
+                    :src="imgSrc(speaker.avatar, 'speakers')"
                     :alt="speaker.name"
                     width="130"
                     height="130"
@@ -232,14 +231,14 @@
             v-for="staff in staffs"
             class="col s6 m4"
             :class="{
-              'push-m4': ($index === staffs.length - 1) && (1 === staffsModThree),
-              'push-m2': ($index >= staffs.length - 2) && (2 === staffsModThree),
-              'push-s3': ($index === staffs.length - 1) && (1 === staffsModTwo)
+              'col-pusher-m4': 0 === $index && 1 === staffsModThree,
+              'col-pusher-m2': 0 === $index && 2 === staffsModThree,
+              'col-pusher-s3': 0 === $index && 1 === staffsModTwo
             }"
           >
             <div class="center">
               <img
-                :src="'./assets/img/staffs/' + staff.avatar"
+                :src="imgSrc(staff.avatar, 'staffs')"
                 :alt="staff.name"
                 width="64"
                 height="64"
@@ -262,10 +261,15 @@
       <p>協辦單位：中正大學校園網路策進會</p>
       <p>© 2016 TechCCU</p>
       <p>Designed by <a href="https://github.com/BePsvPT" target="_blank">BePsvPT</a></p>
+      <p class="history">
+        <a href="http://techccu.csie.io/2015/">2015</a>
+        <span> | </span>
+        <a href="http://techccu.csie.io/2014/">2014</a>
+      </p>
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
     <script>
       new Vue({
@@ -275,36 +279,36 @@
           speakers: [
             /*
              {
-               avatar: 'avatar.jpg',
-               name: 'Speaker Name',
-               description: 'Short Description',
-               link: 'An external link to speaker fb, github or website'
+             avatar: 'avatar.jpg',
+             name: 'Speaker Name',
+             description: 'Short Description',
+             link: 'An external link to speaker fb, github or website'
              }
              */
-             {
-               avatar: 'clyang.jpg',
-               name: 'clyang',
-               description: '一個碰到Frontend就會死掉的Backend技術愛好者，真。米蟲一枚，跪求介紹工作。',
-               link: 'https://csie.io'
-             },
-             {
-               avatar: 'wancw.png',
-               name: 'WanCW',
-               description: '從 Web 寫到 App 又跳到 backend 的 coding monkey，最近為了工作開始追韓劇。',
-               link: 'https://about.me/wancw'
-             },
-             {
-               avatar: 'alwayshome.jpg',
-               name: 'Alwayshome',
-               description: '曾經是多媒體處理冒險者，直到我的膝蓋中了一箭。目前回到高雄工作，擔任雜事收集者，例如下午茶開團小弟或是 app 開發。',
-               link: 'https://www.facebook.com/alwayshome.yu'
-             },
-             {
-               avatar: 'tommy.png',
-               name: 'Tommy Chen',
-               description: '從前端墜入後端的全端工程師，熱愛鑽研新語言，目前的新歡是 Elixir。',
-               link: 'https://zespia.tw/'
-             }
+            {
+              avatar: 'clyang.jpg',
+              name: 'clyang',
+              description: '一個碰到Frontend就會死掉的Backend技術愛好者，真。米蟲一枚，跪求介紹工作。',
+              link: 'https://csie.io'
+            },
+            {
+              avatar: 'wancw.png',
+              name: 'WanCW',
+              description: '從 Web 寫到 App 又跳到 backend 的 coding monkey，最近為了工作開始追韓劇。',
+              link: 'https://about.me/wancw'
+            },
+            {
+              avatar: 'alwayshome.jpg',
+              name: 'Alwayshome',
+              description: '曾經是多媒體處理冒險者，直到我的膝蓋中了一箭。目前回到高雄工作，擔任雜事收集者，例如下午茶開團小弟或是 app 開發。',
+              link: 'https://www.facebook.com/alwayshome.yu'
+            },
+            {
+              avatar: 'tommy.png',
+              name: 'Tommy Chen',
+              description: '從前端墜入後端的全端工程師，熱愛鑽研新語言，目前的新歡是 Elixir。',
+              link: 'https://zespia.tw'
+            }
           ],
 
           schedules: {
@@ -355,6 +359,12 @@
 
           staffsModTwo () {
             return this.staffs.length & 1
+          }
+        },
+
+        methods: {
+          imgSrc (filename, category) {
+            return `./assets/img/${category}/${filename}`
           }
         },
 
