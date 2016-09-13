@@ -111,10 +111,11 @@
         <div class="row">
           <div
             v-for="speaker in speakers"
-            class="col s12 m4"
+            class="col s12 m6 l4"
             :class="{
-              'col-pusher-m4': 0 === $index && 1 === speakersModThree,
-              'col-pusher-m2': 0 === $index && 2 === speakersModThree
+              'col-pusher-m3': 0 === $index && 1 === speakersModTwo,
+              'col-pusher-l4': 0 === $index && 1 === speakersModThree,
+              'col-pusher-l2': 0 === $index && 2 === speakersModThree
             }"
           >
             <a :href="speaker.link" target="_blank">
@@ -129,7 +130,7 @@
                   >
                 </div>
 
-                <div style="max-height: 8.5rem; height: 8.5rem;">
+                <div class="description">
                   <h5 class="center">{{ speaker.name }}</h5>
                   <p class="black-text">{{ speaker.description }}</p>
                 </div>
@@ -153,8 +154,8 @@
         </div>
 
         <div class="row">
-          <schedule-component :schedules="schedules.am"  class="col s12 m5 offset-m1" style="margin-bottom: 0;"></schedule-component>
-          <schedule-component :schedules="schedules.pm"  class="col s12 m5"></schedule-component>
+          <schedule-component :schedules="schedules.am"  class="col s12 l5 offset-l1" style="margin-bottom: 0;"></schedule-component>
+          <schedule-component :schedules="schedules.pm"  class="col s12 l5"></schedule-component>
         </div>
 
         <h3
@@ -468,6 +469,10 @@
         computed: {
           speakersModThree () {
             return this.speakers.length % 3
+          },
+
+          speakersModTwo () {
+            return this.speakers.length & 1
           },
 
           staffsModThree () {

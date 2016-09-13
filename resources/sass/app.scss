@@ -13,14 +13,20 @@ hr {
 }
 
 .col-pusher {
-  @media only screen and (min-width: 601px) {
-    &-m4 {
+  @media only screen and (min-width: 993px) {
+    &-l4 {
       margin-left: 33.3333333333% !important;
       margin-right: 33.3333333333% !important;
     }
 
-    &-m2 {
+    &-l2 {
       margin-left: 16.6666666667% !important;
+    }
+  }
+
+  @media only screen and (min-width: 601px) and (max-width: 992px) {
+    &-m3 {
+      margin-left: 25% !important;
     }
   }
 
@@ -101,6 +107,18 @@ hr {
 
 #speakers {
   margin-top: 5rem;
+
+  .description {
+    max-height: 8.5rem;
+    height: 8.5rem;
+  }
+
+  @media only screen and (min-width: 993px) and (max-width: 1150px) {
+    .description {
+      max-height: 9.5rem;
+      height: 9.5rem;
+    }
+  }
 }
 
 #schedule {
@@ -132,22 +150,11 @@ hr {
       div {
         display: inline-flex;
         margin-left: 3rem;
+        max-width: calc(100% - 8rem);
 
         h6 {
           font-size: 1.1rem;
           line-height: 1.5;
-        }
-
-        @media screen and (min-width: 601px) {
-          h6 {
-            max-width: 23.5rem;
-          }
-        }
-      }
-
-      @media only screen and (max-width: 600px) {
-        div {
-          max-width: 50%;
         }
       }
 
