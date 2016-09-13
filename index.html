@@ -146,15 +146,15 @@
 
       <hr id="schedule-separator">
 
-      <div class="container" id="schedule">
+      <div class="container-full" id="schedule">
         <div class="heading">
           <h3>議程</h3>
           <p class="flow-text">Schedule</p>
         </div>
 
         <div class="row">
-          <schedule-component :schedules="schedules.am" style="margin-bottom: 0;"></schedule-component>
-          <schedule-component :schedules="schedules.pm"></schedule-component>
+          <schedule-component :schedules="schedules.am"  class="col s12 m5 offset-m1" style="margin-bottom: 0;"></schedule-component>
+          <schedule-component :schedules="schedules.pm"  class="col s12 m5"></schedule-component>
         </div>
 
         <h3
@@ -273,6 +273,38 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+    <script type="x-template" id="schedule-component">
+      <ul>
+        <li v-for="schedule in schedules" :class="{ minor: schedule.minor }">
+          <time>{{ schedule.time }}</time>
+
+          <div>
+            <h6>
+              <span v-if="schedule.speaker">{{ schedule.speaker }} - </span>
+
+              <span>{{ schedule.topic }}</span>
+
+              <template v-if="schedule.slide || schedule.video">
+                <br><br>
+
+                <a
+                  v-if="schedule.slide"
+                  :href="schedule.slide"
+                  target="_blank"
+                  style="margin-right: 0.85rem;"
+                ><i class="fa fa-slideshare fa-fw" aria-hidden="true"></i> 簡報</a>
+
+                <a
+                  v-if="schedule.video"
+                  :href="schedule.video"
+                  target="_blank"
+                ><i class="fa fa-youtube-play fa-fw" aria-hidden="true"></i> 影片</a>
+              </template>
+            </h6>
+          </div>
+        </li>
+      </ul>
+    </script>
     <script>
       new Vue({
         el: '#techccu-2016',
@@ -335,17 +367,82 @@
             am: [
               /*
                {
-                 minor: false, // 是否為主要議程
+                 minor: true, // 非議程類, optional
                  time: '08:40 AM',
-                 speaker: 'Speaker Name',
+                 speaker: 'Speaker Name', // optional
                  topic: 'Topic',
                  slide: 'Link to the slide', // optional
                  video: 'Link to the video' // optional
                },
                */
+              {
+                minor: true,
+                time: '09:15 AM',
+                topic: '報到'
+              },
+              {
+                minor: true,
+                time: '09:50 AM',
+                topic: '開幕'
+              },
+              {
+                minor: false,
+                time: '10:00 AM',
+                speaker: 'clyang',
+                topic: '造輪子前請多想三秒 - 淺談 url masking 服務的幕後 stack'
+              },
+              {
+                time: '10:50 AM',
+                speaker: 'Alwayshome',
+                topic: '從零開始的多媒體處理 -- Video2Comics'
+              },
+              {
+                time: '11:40 AM',
+                speaker: 'WanCW',
+                topic: 'Minesweeping on AWS Lambda - AWS Serverless 實務經驗談'
+              },
+              {
+                minor: true,
+                time: '12:30 PM',
+                topic: '午餐'
+              }
             ],
 
             pm: [
+              {
+                time: '01:20 PM',
+                speaker: 'garygong',
+                topic: '人性與設計 -- Designing UI / UX with Psychological Approaches'
+              },
+              {
+                time: '02:30 PM',
+                speaker: 'Ray Shih',
+                topic: 'Intro to Functional Programming'
+              },
+              {
+                minor: true,
+                time: '03:10 PM',
+                topic: '下午茶'
+              },
+              {
+                time: '03:30 PM',
+                speaker: 'Tommy Chen',
+                topic: 'Kubernetes 101'
+              },
+              {
+                time: '04:20 PM',
+                speaker: 'Kudo',
+                topic: '程式設計師的自我修養'
+              },
+              {
+                time: '05:15 PM',
+                topic: 'Lightning Talk'
+              },
+              {
+                minor: true,
+                time: '05:45 PM',
+                topic: '閉幕'
+              }
             ]
           },
 
@@ -390,36 +487,7 @@
 
         components: {
           'schedule-component': Vue.extend({
-            template: `<ul class="col s12 m6">
-            <li v-for="schedule in schedules" :class="{ minor: schedule.minor }">
-              <time>{{ schedule.time }}</time>
-
-              <div>
-                <h6>
-                  <span class="topic">{{ schedule.topic }}</span>
-
-                  <span v-if="schedule.speaker" class="speaker"> - {{ schedule.speaker }}</span>
-
-                  <template v-if="schedule.slide || schedule.video">
-                    <br><br>
-
-                    <a
-                      v-if="schedule.slide"
-                      :href="schedule.slide"
-                      target="_blank"
-                      style="margin-right: 0.85rem;"
-                    ><i class="fa fa-slideshare fa-fw" aria-hidden="true"></i> 簡報</a>
-
-                    <a
-                      v-if="schedule.video"
-                      :href="schedule.video"
-                      target="_blank"
-                    ><i class="fa fa-youtube-play fa-fw" aria-hidden="true"></i> 影片</a>
-                  </template>
-                </h6>
-              </div>
-            </li>
-          </ul>`,
+            template: '#schedule-component',
 
             props: {
               schedules: {
