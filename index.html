@@ -28,10 +28,11 @@
 
               <!-- Desktop 選單列 -->
               <ul class="right hide-on-med-and-down">
-                <li><a href="#about-us-separator"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i> 關於我們</a></li>
+                <li><a href="#origin-separator"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i> 緣起</a></li>
                 <li><a href="#speakers-separator"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> 講者</a></li>
                 <li><a href="#schedule-separator"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> 議程</a></li>
                 <li><a href="#location-separator"><i class="fa fa-location-arrow fa-fw" aria-hidden="true"></i> 地點</a></li>
+                <li><a href="#sponsors-separator"><i class="fa fa-trophy fa-fw" aria-hidden="true"></i> 贊助</a></li>
                 <li><a href="#staffs-separator"><i class="fa fa-users fa-fw" aria-hidden="true"></i> 工作人員</a></li>
                 <li><a href="http://techccu.kktix.cc/events/techccu2016"><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i> 報名</a></li>
               </ul>
@@ -39,10 +40,11 @@
               <!-- Mobile 選單列 -->
               <ul class="side-nav" id="mobile-navbar">
                 <li><a href="http://techccu.kktix.cc/events/techccu2016"><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i> 報名</a></li>
-                <li><a href="#about-us-separator"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i> 關於我們</a></li>
+                <li><a href="#origin-separator"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i> 緣起</a></li>
                 <li><a href="#speakers-separator"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> 講者</a></li>
                 <li><a href="#schedule-separator"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> 議程</a></li>
                 <li><a href="#location-separator"><i class="fa fa-location-arrow fa-fw" aria-hidden="true"></i> 地點</a></li>
+                <li><a href="#sponsors-separator"><i class="fa fa-trophy fa-fw" aria-hidden="true"></i> 贊助</a></li>
                 <li><a href="#staffs-separator"><i class="fa fa-users fa-fw" aria-hidden="true"></i> 工作人員</a></li>
               </ul>
             </div>
@@ -83,13 +85,13 @@
           </h5>
         </div>
 
-        <div id="about-us-separator"></div>
+        <div id="origin-separator"></div>
       </div>
 
-      <div class="container" id="about-us">
+      <div class="container" id="origin">
         <div class="heading">
-          <h3>關於我們</h3>
-          <p class="flow-text">About Us</p>
+          <h3>緣起</h3>
+          <p class="flow-text">Origin</p>
         </div>
 
         <p class="center" style="white-space: pre-line; font-size: 1.35rem; line-height: 3rem;"><!--
@@ -217,6 +219,37 @@
 
             <h5><i class="fa fa-subway fa-fw" aria-hidden="true"></i> 高鐵</h5>
             <p>由嘉義高鐵站搭乘計程車至本校，路程約 30 ~ 40 分鐘。</p>
+          </div>
+        </div>
+      </div>
+
+      <hr id="sponsors-separator">
+
+      <div class="container" id="sponsors">
+        <div class="heading">
+          <h3>贊助</h3>
+          <p class="flow-text">Sponsors</p>
+        </div>
+
+        <div class="row">
+          <div
+            v-for="sponsor in sponsors"
+            class="col s12 l6"
+            :class="{
+              'col-pusher-l3': 0 === $index && 1 === sponsorsModTwo,
+            }"
+          >
+            <a :href="sponsor.link" target="_blank">
+              <div class="card-panel hoverable">
+                <div class="center">
+                  <img
+                    :src="imgSrc(sponsor.logo, 'sponsors')"
+                    :alt="sponsor.name"
+                    class="responsive-img"
+                  >
+                </div>
+              </div>
+            </a>
           </div>
         </div>
       </div>
@@ -463,6 +496,14 @@
               name: 'bepsvpt',
               description: 'Website Designer'
             }
+          ],
+
+          sponsors: [
+            {
+              logo: "dcard.png",
+              name: "Dcard",
+              link: "https://www.dcard.tw"
+            }
           ]
         },
 
@@ -481,6 +522,10 @@
 
           staffsModTwo () {
             return this.staffs.length & 1
+          },
+
+          sponsorsModTwo () {
+            return this.sponsors.length & 1
           }
         },
 
