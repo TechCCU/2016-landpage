@@ -104,7 +104,7 @@
 
       <hr id="speakers-separator">
 
-      <div class="container" id="speakers">
+      <div class="container" id="speakers" style="opacity: 0;">
         <div class="heading">
           <h3>講者</h3>
           <p class="flow-text">Speakers</p>
@@ -283,7 +283,7 @@
                 :alt="staff.name"
                 width="64"
                 height="64"
-                class="circle responsive-img"
+                class="circle"
               >
             </div>
 
@@ -312,7 +312,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
     <script type="x-template" id="schedule-component">
       <ul>
-        <li v-for="schedule in schedules" :class="{ minor: schedule.minor }">
+        <li v-for="schedule in schedules" :class="{ minor: schedule.minor }" style="opacity: 0;">
           <time>{{ schedule.time }}</time>
 
           <div>
@@ -642,6 +642,11 @@
         $(document).on('click', '#mobile-navbar a', function () {
           $('#sidenav-overlay').click();
         });
+
+        Materialize.scrollFire([
+          { selector: '#speakers', offset: 200, callback: function () { Materialize.fadeInImage('#speakers'); } },
+          { selector: '#schedule', offset: 250, callback: function () { Materialize.showStaggeredList('#schedule'); } }
+        ]);
       });
     </script>
     <script>
