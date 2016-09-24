@@ -32,7 +32,7 @@
                 <li><a href="#speakers-separator"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> 講者</a></li>
                 <li><a href="#schedule-separator"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> 議程</a></li>
                 <li><a href="#location-separator"><i class="fa fa-location-arrow fa-fw" aria-hidden="true"></i> 地點</a></li>
-                <li><a href="#sponsors-separator"><i class="fa fa-trophy fa-fw" aria-hidden="true"></i> 贊助</a></li>
+                <li><a href="#organizations-separator"><i class="fa fa-sitemap fa-fw" aria-hidden="true"></i> 合辦單位</a></li>
                 <li><a href="#staffs-separator"><i class="fa fa-users fa-fw" aria-hidden="true"></i> 工作人員</a></li>
                 <li><a href="http://techccu.kktix.cc/events/techccu2016"><i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i> 報名</a></li>
               </ul>
@@ -44,7 +44,7 @@
                 <li><a href="#speakers-separator"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> 講者</a></li>
                 <li><a href="#schedule-separator"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> 議程</a></li>
                 <li><a href="#location-separator"><i class="fa fa-location-arrow fa-fw" aria-hidden="true"></i> 地點</a></li>
-                <li><a href="#sponsors-separator"><i class="fa fa-trophy fa-fw" aria-hidden="true"></i> 贊助</a></li>
+                <li><a href="#organizations-separator"><i class="fa fa-sitemap fa-fw" aria-hidden="true"></i> 合辦單位</a></li>
                 <li><a href="#staffs-separator"><i class="fa fa-users fa-fw" aria-hidden="true"></i> 工作人員</a></li>
               </ul>
             </div>
@@ -223,35 +223,40 @@
         </div>
       </div>
 
-      <hr id="sponsors-separator">
+      <hr id="organizations-separator">
 
-      <div class="container" id="sponsors">
-        <div class="heading">
-          <h3>贊助</h3>
-          <p class="flow-text">Sponsors</p>
-        </div>
-
-        <div class="row">
-          <div
-            v-for="sponsor in sponsors"
-            class="col s12 l6"
-            :class="{
-              'col-pusher-l3': 0 === $index && 1 === sponsorsModTwo,
-            }"
-          >
-            <a :href="sponsor.link" target="_blank">
-              <div class="card-panel hoverable">
-                <div class="center">
-                  <img
-                    :src="imgSrc(sponsor.logo, 'sponsors')"
-                    :alt="sponsor.name"
-                    class="responsive-img"
-                  >
-                </div>
-              </div>
-            </a>
+      <div class="container" id="organizations">
+        <template v-for="organization in organizations">
+          <div class="heading" style="margin-top: 4rem;">
+            <h3>{{ organization.title }}</h3>
+            <p class="flow-text">{{ organization.title_en }}</p>
           </div>
-        </div>
+
+          <div class="row">
+            <div
+              v-for="item in $data[organization.target]"
+              class="col s12 offset-l2 l8"
+            >
+              <a :href="item.link" target="_blank">
+                <div
+                  :style="item.style || {}"
+                  class="card-panel hoverable"
+                >
+                  <div class="center">
+                    <img
+                      v-if="item.logo"
+                      :src="imgSrc(item.logo, organization.title_en.toLowerCase())"
+                      :alt="item.name"
+                      class="responsive-img"
+                    >
+
+                    <h4 v-else class="white-text">{{ item.name }}</h4>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </template>
       </div>
 
       <hr id="staffs-separator">
@@ -293,9 +298,7 @@
 
     <footer class="container center">
       <hr style="margin: 2.5rem 0;">
-      <p>主辦單位：TechCCU, DM+ Lab @ Dept. CSIE</p>
-      <p>協辦單位：中正大學校園網路策進會</p>
-      <p>© 2016 TechCCU</p>
+      <p>© 2016 <a href="http://techccu.csie.io">TechCCU</a></p>
       <p>Designed by <a href="https://github.com/BePsvPT" target="_blank">BePsvPT</a></p>
       <p class="history">
         <a href="http://techccu.csie.io/2015/">2015</a>
@@ -498,11 +501,52 @@
             }
           ],
 
-          sponsors: [
+          organizations: [
+            {
+              title: '主辦',
+              title_en: 'Organisers',
+              target: 'organisers'
+            },
+            {
+              title: '協辦',
+              title_en: 'Co-organisers',
+              target: 'coOrganisers'
+            }
+          ],
+
+          organisers: [
+            {
+              logo: "techccu.svg",
+              name: "TechCCU",
+              link: "http://techccu.csie.io"
+            },
+            {
+              name: "Data Management+ Laboratory",
+              link: "http://dmplus.cs.ccu.edu.tw/",
+              style: {
+                backgroundColor: "rgba(136, 136, 136, 0.85)"
+              }
+            }
+          ],
+
+          coOrganisers: [
+            {
+              logo: "cna.png",
+              name: "中正大學校園網路策進會",
+              link: "https://www.cna.ccu.edu.tw"
+            },
             {
               logo: "dcard.png",
               name: "Dcard",
               link: "https://www.dcard.tw"
+            },
+            {
+              logo: "iii-ideas.png",
+              name: "財團法人資訊工業策進會 創新應用服務研究所",
+              link: "http://www.ideas.iii.org.tw",
+              style: {
+                backgroundColor: "rgba(136, 136, 136, 0.85)"
+              }
             }
           ]
         },
@@ -522,10 +566,6 @@
 
           staffsModTwo () {
             return this.staffs.length & 1
-          },
-
-          sponsorsModTwo () {
-            return this.sponsors.length & 1
           }
         },
 
