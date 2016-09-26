@@ -250,7 +250,7 @@
                       class="responsive-img"
                     >
 
-                    <h4 v-else class="white-text">{{ item.name }}</h4>
+                    <h5 v-else class="white-text">{{ item.name }}</h5>
                   </div>
                 </div>
               </a>
@@ -576,11 +576,6 @@
 
           coOrganisers: [
             {
-              logo: "cna.png",
-              name: "中正大學校園網路策進會",
-              link: "https://www.cna.ccu.edu.tw"
-            },
-            {
               logo: "dcard.png",
               name: "Dcard",
               link: "https://www.dcard.tw"
@@ -588,7 +583,25 @@
             {
               logo: "iii-ideas.png",
               name: "財團法人資訊工業策進會 創新應用服務研究所",
-              link: "http://www.ideas.iii.org.tw",
+              link: "http://www.ideas.iii.org.tw"
+            },
+            {
+              name: "國立中正大學工學院",
+              link: "http://coe.ccu.edu.tw",
+              style: {
+                backgroundColor: "rgba(136, 136, 136, 0.85)"
+              }
+            },
+            {
+              name: "國立中正大學資訊工程學系暨研究所",
+              link: "https://www.cs.ccu.edu.tw",
+              style: {
+                backgroundColor: "rgba(136, 136, 136, 0.85)"
+              }
+            },
+            {
+              name: "國立中正大學校園網路策進會",
+              link: "https://www.cna.ccu.edu.tw",
               style: {
                 backgroundColor: "rgba(136, 136, 136, 0.85)"
               }
@@ -644,7 +657,7 @@
         });
 
         Materialize.scrollFire([
-          { selector: '#speakers', offset: 200, callback: function () { Materialize.fadeInImage('#speakers'); } },
+          { selector: '#speakers', offset: 150, callback: function () { Materialize.fadeInImage('#speakers'); } },
           { selector: '#schedule', offset: 250, callback: function () { Materialize.showStaggeredList('#schedule'); } }
         ]);
       });
