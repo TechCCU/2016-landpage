@@ -12,7 +12,7 @@
     <meta property="og:description" content="2016 年 10 月 01 日，中正大學 創新大樓 1F 銘珠講堂">
     <title>TechCCU 2016</title>
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/app.css">
   </head>
@@ -322,9 +322,7 @@
 
               <span>{{ schedule.topic }}</span>
 
-              <template v-if="schedule.slide || schedule.video">
-                <br><br>
-
+              <span v-if="schedule.slide || schedule.video" style="display: block;">
                 <a
                   v-if="schedule.slide"
                   :href="schedule.slide"
@@ -337,7 +335,7 @@
                   :href="schedule.video"
                   target="_blank"
                 ><i class="fa fa-youtube-play fa-fw" aria-hidden="true"></i> 影片</a>
-              </template>
+              </span>
             </h6>
           </div>
         </li>
@@ -415,11 +413,6 @@
                */
               {
                 minor: true,
-                time: '09:15 AM',
-                topic: '報到'
-              },
-              {
-                minor: true,
                 time: '09:50 AM',
                 topic: '開幕'
               },
@@ -448,17 +441,17 @@
                 minor: true,
                 time: '12:30 PM',
                 topic: '午餐'
-              }
-            ],
-
-            pm: [
+              },
               {
                 time: '01:20 PM',
                 speaker: 'garygong',
                 topic: '人性與設計 -- Designing UI / UX with Psychological Approaches',
                 slide: 'assets/slides/garygong.pdf',
                 video: 'https://www.youtube.com/watch?v=__7cF-xLQ9E'
-              },
+              }
+            ],
+
+            pm: [
               {
                 time: '02:30 PM',
                 speaker: 'Ray Shih',
@@ -487,7 +480,12 @@
               },
               {
                 time: '05:15 PM',
-                topic: 'Lightning Talk'
+                topic: 'Lightning Talk - pmgo.pw',
+                slide: 'assets/slides/bepsvpt.pdf'
+              },
+              {
+                time: '05:25 PM',
+                topic: 'Lightning Talk - '
               },
               {
                 minor: true,
@@ -685,7 +683,7 @@
 
         Materialize.scrollFire([
           { selector: '#speakers', offset: 150, callback: function () { Materialize.fadeInImage('#speakers'); } },
-          { selector: '#schedule', offset: 250, callback: function () { Materialize.showStaggeredList('#schedule'); } }
+          { selector: '#schedule', offset: 200, callback: function () { Materialize.showStaggeredList('#schedule'); } }
         ]);
       });
     </script>
